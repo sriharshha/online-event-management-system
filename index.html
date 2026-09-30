@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Event Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">OE</div>
+      <div>
+        <h1>Online Event Management System</h1>
+        <p>Campus Event Registration Portal</p>
+      </div>
+    </div>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </header>
+
+  <nav class="navbar" id="navbar">
+    <button class="nav-link active" data-section="home">Home</button>
+    <button class="nav-link" data-section="events">Events</button>
+    <button class="nav-link" data-section="register">Register</button>
+    <button class="nav-link" data-section="dashboard">Admin Dashboard</button>
+    <button class="nav-link" data-section="participants">Participants</button>
+  </nav>
+
+  <main>
+    <section id="home" class="section active-section">
+      <div class="hero">
+        <div>
+          <span class="badge">JAVA PROJECT DEMO</span>
+          <h2>Manage Campus Events<br><span>Simply & Efficiently</span></h2>
+          <p>View upcoming events, register online, manage participants and track event capacity from one centralized system.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" data-go="events">Explore Events</button>
+            <button class="secondary-btn" data-go="register">Register Now</button>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">🎓</div>
+          <h3>Campus Events</h3>
+          <p>Technical • Cultural • Workshops • Seminars</p>
+          <div class="mini-stats">
+            <div><b id="heroEventCount">2</b><span>Events</span></div>
+            <div><b id="heroRegistrationCount">0</b><span>Registrations</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">AT A GLANCE</span>
+          <h2>System Overview</h2>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-icon">📅</span><div><b id="statEvents">2</b><small>Total Events</small></div></div>
+        <div class="stat-card"><span class="stat-icon">🟢</span><div><b id="statOpen">2</b><small>Open Events</small></div></div>
+        <div class="stat-card"><span class="stat-icon">👥</span><div><b id="statParticipants">0</b><small>Registrations</small></div></div>
+        <div class="stat-card"><span class="stat-icon">🏫</span><div><b>2</b><small>Departments</small></div></div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Student Module</h3>
+          <p>Students can view event information and register or cancel their registration.</p>
+        </div>
+        <div class="info-card">
+          <h3>Admin Module</h3>
+          <p>Administrators can monitor events, capacities and registered participants.</p>
+        </div>
+        <div class="info-card">
+          <h3>Validation</h3>
+          <p>The system prevents registration after an event reaches its maximum capacity.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="events" class="section">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">EVENT CATALOG</span>
+          <h2>Available Campus Events</h2>
+          <p>Choose an event to view details and register.</p>
+        </div>
+        <select id="categoryFilter" class="select">
+          <option value="All">All Categories</option>
+          <option value="Technical">Technical</option>
+          <option value="Seminar">Seminar</option>
+        </select>
+      </div>
+      <div id="eventGrid" class="event-grid"></div>
+    </section>
+
+    <section id="register" class="section">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">ONLINE REGISTRATION</span>
+          <h2>Register for an Event</h2>
+          <p>Enter student details and select an available event.</p>
+        </div>
+      </div>
+
+      <div class="form-layout">
+        <form id="registrationForm" class="form-card">
+          <div class="form-row">
+            <label>Student Name
+              <input type="text" id="studentName" placeholder="Enter your full name" required>
+            </label>
+            <label>Roll Number
+              <input type="text" id="rollNo" placeholder="e.g. 257R1A05M4" required>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Department
+              <select id="department" required>
+                <option value="">Select Department</option>
+                <option>CSE</option>
+                <option>IT</option>
+                <option>ECE</option>
+                <option>EEE</option>
+                <option>MECH</option>
+                <option>CIVIL</option>
+              </select>
+            </label>
+            <label>Email
+              <input type="email" id="email" placeholder="student@example.com" required>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Phone Number
+              <input type="tel" id="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+            </label>
+            <label>Select Event
+              <select id="eventSelect" required></select>
+            </label>
+          </div>
+          <label class="check"><input type="checkbox" required> I confirm that the information entered is correct.</label>
+          <button class="primary-btn full" type="submit">Submit Registration</button>
+          <p class="form-note">A registration ID will be generated after successful registration.</p>
+        </form>
+
+        <div class="side-card">
+          <h3>Registration Process</h3>
+          <div class="step"><span>1</span><div><b>Enter Details</b><small>Provide valid student information.</small></div></div>
+          <div class="step"><span>2</span><div><b>Select Event</b><small>Choose an event with available seats.</small></div></div>
+          <div class="step"><span>3</span><div><b>Submit</b><small>Confirm your registration.</small></div></div>
+          <div class="step"><span>4</span><div><b>Get ID</b><small>Save the registration ID.</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dashboard" class="section">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">ADMIN MODULE</span>
+          <h2>Admin Dashboard</h2>
+          <p>Monitor events and participant registrations.</p>
+        </div>
+        <button class="secondary-btn" id="resetDemo">Reset Demo Data</button>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="dash-card"><small>Total Events</small><b id="dashEvents">2</b></div>
+        <div class="dash-card"><small>Total Registrations</small><b id="dashRegs">0</b></div>
+        <div class="dash-card"><small>Open Events</small><b id="dashOpen">2</b></div>
+        <div class="dash-card"><small>Capacity</small><b id="dashCapacity">90</b></div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header"><h3>Event Status</h3><span class="live">● LIVE DEMO</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Event</th><th>Category</th><th>Organizer</th><th>Registered</th><th>Capacity</th><th>Status</th></tr></thead>
+            <tbody id="eventTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="participants" class="section">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">REGISTRATION RECORDS</span>
+          <h2>Registered Participants</h2>
+          <p>All registrations stored during this browser demo are shown below.</p>
+        </div>
+      </div>
+      <div class="table-card">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Registration ID</th><th>Student</th><th>Roll No</th><th>Department</th><th>Email</th><th>Event</th><th>Action</th></tr></thead>
+            <tbody id="participantsBody"></tbody>
+          </table>
+        </div>
+        <div id="emptyParticipants" class="empty-state">No participants registered yet. Use the Register page to add one.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>Online Event Management System</b><span>Java Project Demonstration</span></div>
+    <div>J. Sri Harsha • 257R1A05M4 • CSE-D</div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

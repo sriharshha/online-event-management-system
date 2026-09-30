@@ -1,0 +1,7 @@
+Online_Event_Management_Webpage/
+│
+├── index.html
+├── style.css
+├── script.js
+├── README.txt
+└── PROJECT_STRUCTURE.txt
